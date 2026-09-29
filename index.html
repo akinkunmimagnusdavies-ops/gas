@@ -65,21 +65,24 @@
 </section>
 
 <section id="book">
-  <h2 style="text-align:center">ORDER <span>NOW</span></h2>
+  <h2 style="text-align:center">ORDER <span>NOW</span>
+    <p class="attention"><span class="span-red">!Attention!!</span>For Single Oder fill form below and place order.</p>
+  </h2>
+  
   <form id="bookingForm" action="https://formspree.io/f/mrpbqwgw" method="POST">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="tel" name="phone" placeholder="Your Phone (WhatsApp)" required>
     <select name="service" required>
       <option value="">Select Gas Size</option>
-      <option>3KG REFILL</option>
-      <option>6KG REFILL</option>
-      <option>12.5KG REFILL</option>
-      <option>25KG REFILL</option>
+      <option>3KG REFILL (₦6,500)</option>
+      <option>6KG REFILL (₦9,500)</option>
+      <option>12.5KG REFILL (₦15,500)</option>
+      <option>25KG REFILL (₦28,000)</option>
     </select>
     <input type="text" name="address" placeholder="Delivery Address" required>
     <input type="hidden" name="_subject" value="New GAS COMPANY Order!">
     <input type="text" name="_gotcha" style="display:none">
-    <button class="btn" type="submit" id="bookBtn">Book Now</button>
+    <button class="btn" type="submit" id="bookBtn">Place Order</button>
     <p id="formStatus" style="text-align:center;margin-top:10px;display:none"></p>
   </form>
 
