@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAS COMPANY - Fast Gas Delivery in Lagos</title>
+  <meta name="description" content="GAS COMPANY - Premium gas refill & delivery in Lagos. Order on WhatsApp now">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div><a href="index.html"><h2>GAS COMPANY</h2></a></div>
+    <div style="display:flex; align-items:center; gap:15px;">
+      <div id="cart-icon" onclick="openCart()" style="cursor:pointer; font-weight:700;">
+        🛒 <span id="cart-count">0</span>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#book">ORDER GAS</a></li>
+      <li><a href="#services">PRICES</a></li>
+      <li><a href="#gallery">GALLERY</a></li>
+      <li><a href="#book">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero" id="home">
+    <div class="discount-badge">🔥 FAST DELIVERY IN LAGOS</div>
+    <h1>GAS <span>COMPANY</span></h1>
+    <p>Fast, Safe & Affordable Gas Refill - Delivered to Your Doorstep</p>
+    <a href="#book" class="btn">ORDER NOW</a>
+  </div>
+
+<section class="services" id="services">
+  <h2>ORDER GAS REFILL</h2>
+    <div class="service-grid">
+        <div class="card"><h3>3KG REFILL</h3><p>₦6,500<img src="images/gasman.png" alt="3kg gas"></p><button onclick="addToCart('3KG REFILL', 6500)">Add to Cart</button></div>
+        <div class="card"><h3>6KG REFILL</h3><p>₦9,500<img src="images/gasman.png" alt="6kg gas"></p><button onclick="addToCart('6KG REFILL', 9500)">Add to Cart</button></div>
+        <div class="card"><h3>12.5KG REFILL</h3><p>₦15,500<img src="images/gasman.png" alt="12.5kg gas"></p><button onclick="addToCart('12.5KG REFILL', 15500)">Add to Cart</button></div>
+        <div class="card"><h3>25KG REFILL</h3><p>₦28,000<img src="images/gasman.png" alt="25kg gas"></p><button onclick="addToCart('25KG REFILL', 28000)">Add to Cart</button></div>
+    </div>
+    <p style="text-align:center; margin-top:10px; color:#888;"><small>*Change price to your real price</small></p>
+</section>
+
+<div id="cart-popup">
+  <div class="cart-box">
+    <h3>🛒 Your Order</h3>
+    <div id="cart-items"></div>
+    <hr style="margin:15px 0">
+    <p><strong>Total: ₦<span id="cart-total">0</span></strong></p>
+    <button class="checkout-btn" onclick="checkout()">Checkout on WhatsApp</button>
+    <button class="close-btn" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</div>
+
+<section id="gallery">
+  <h2 style="text-align:center">Gallery</h2>
+  <div class="gallery">
+    <img src="images/gasimg1.png" alt="">
+    <img src="images/gasimg2.png" alt="">
+    <img src="images/gasimg3.png" alt="">
+    <img src="images/gasimg4.png" alt="">
+  </div>
+</section>
+
+<section id="book">
+  <h2 style="text-align:center">ORDER <span>NOW</span></h2>
+  <form id="bookingForm" action="https://formspree.io/f/mrpbqwgw" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="tel" name="phone" placeholder="Your Phone (WhatsApp)" required>
+    <select name="service" required>
+      <option value="">Select Gas Size</option>
+      <option>3KG REFILL</option>
+      <option>6KG REFILL</option>
+      <option>12.5KG REFILL</option>
+      <option>25KG REFILL</option>
+    </select>
+    <input type="text" name="address" placeholder="Delivery Address" required>
+    <input type="hidden" name="_subject" value="New GAS COMPANY Order!">
+    <input type="text" name="_gotcha" style="display:none">
+    <button class="btn" type="submit" id="bookBtn">Book Now</button>
+    <p id="formStatus" style="text-align:center;margin-top:10px;display:none"></p>
+  </form>
+
+  <div style="text-align:center; margin-top:20px">
+    <p style="color:#888; margin-bottom:10px">Or</p>
+    <a id="waDirect" href="https://wa.me/2349156002887?text=Hi%20GAS%20COMPANY%20I%20want%20to%20order%20gas" target="_blank" class="wa-btn">
+      Chat on WhatsApp Directly
+    </a>
+    <p style="color:#666; font-size:12px; margin-top:8px">Fastest response • 09156002887</p>
+  </div>
+
+  <div style="margin-top:45px">
+    <h3 style="text-align:center;margin-bottom:15px">📍 Find Us — Lagos</h3>
+    <iframe src="https://maps.google.com/maps?q=Lagos%20Nigeria&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;border-radius:15px" loading="lazy"></iframe>
+  </div>
+</section>
+
+<footer>
+  <p style="color:#ffcc00;font-weight:700">GAS COMPANY</p>
+  <p>Premium Gas Delivery • Lagos, Nigeria</p>
+  <p style="margin-top:15px">Open: Mon-Sat 9am - 9pm | Sun 12pm - 8pm</p>
+  <p style="margin-top:15px;font-size:12px">© <span id="year"></span> GAS COMPANY • Built by Kreations</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('active');
+}
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('active');
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// FORM
+const bookingForm = document.getElementById('bookingForm');
+const status = document.getElementById('formStatus');
+if(bookingForm){
+  bookingForm.addEventListener("submit", async (e) => {
+   e.preventDefault();
+   let btn = document.getElementById('bookBtn');
+   btn.textContent = "Sending...";
+   btn.disabled = true;
+   status.style.display = "block";
+   status.textContent = "Sending your order...";
+   try {
+    let data = new FormData(bookingForm);
+    let res = await fetch(bookingForm.action, {method:'POST', body:data, headers:{'Accept':'application/json'}});
+     if(res.ok){
+       status.style.color = "green";
+       status.textContent = "✅ Order sent! We will contact you shortly.";
+      bookingForm.reset();
+     } else {
+       status.style.color = "red";
+       status.textContent = "❌ Failed. WhatsApp us: 09156002887";
+     }
+   } catch(err) {
+     status.style.color = "red";
+     status.textContent = "❌ Network error. WhatsApp us.";
+   }
+   btn.textContent = "Book Now";
+   btn.disabled = false;
+  });
+}
+
+// CART - CLEAN
+let cart = JSON.parse(localStorage.getItem('gas_company_cart')) || [];
+
+function addToCart(name, price) {
+  let existing = cart.find(item => item.name === name);
+  if (existing) existing.qty += 1;
+  else cart.push({name, price, qty: 1});
+  localStorage.setItem('gas_company_cart', JSON.stringify(cart));
+  updateCart();
+  openCart();
+}
+
+function updateCart() {
+  const countEl = document.getElementById('cart-count');
+  const itemsEl = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total');
+  let totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+  if(countEl) countEl.innerText = totalCount;
+  let total = 0;
+  let html = "";
+  cart.forEach((item, index) => {
+    total += item.price * item.qty;
+    html += `<p style="color:#000; display:flex; justify-content:space-between; margin:10px 0;">
+      <span>${item.name}</span>
+      <span>
+        <button onclick="changeQty(${index}, -1)">-</button> ${item.qty} <button onclick="changeQty(${index}, 1)">+</button>
+        <button onclick="removeItem(${index})" style="margin-left:8px;background:red;color:white;border:none;padding:2px 8px;border-radius:10px;">x</button>
+      </span></p>`;
+  });
+  if(itemsEl) itemsEl.innerHTML = html || "<p style='color:#888'>Cart empty</p>";
+  if(totalEl) totalEl.innerText = total.toLocaleString();
+}
+
+function changeQty(i, delta){
+  cart[i].qty += delta;
+  if(cart[i].qty <= 0) cart.splice(i,1);
+  localStorage.setItem('gas_company_cart', JSON.stringify(cart));
+  updateCart();
+}
+function removeItem(i){
+  cart.splice(i,1);
+  localStorage.setItem('gas_company_cart', JSON.stringify(cart));
+  updateCart();
+}
+function openCart(){ document.getElementById('cart-popup').style.display = 'flex'; }
+function closeCart(){ document.getElementById('cart-popup').style.display = 'none'; }
+
+function checkout(){
+  if(cart.length === 0) return alert("Cart empty");
+  let msg = "Hi GAS COMPANY! I want to order:\n";
+  cart.forEach(item => { msg += `- ${item.name} x${item.qty} = ₦${item.price*item.qty}\n`; });
+  let total = cart.reduce((s,i)=> s + i.price*i.qty, 0);
+  msg += `\nTotal: ₦${total}\nMy address is: `;
+  window.open(`https://wa.me/2349156002887?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+updateCart();
+document.getElementById('cart-popup')?.addEventListener('click', (e)=>{
+  if(e.target.id === 'cart-popup') closeCart();
+});
+
+// SMART WHATSAPP BTN
+document.getElementById('waDirect')?.addEventListener('click', function(){
+  let name = document.querySelector('input[name="name"]')?.value || "";
+  let service = document.querySelector('select[name="service"]')?.value || "gas refill";
+  let text = `Hi GAS COMPANY! ${name ? "I'm "+name+"," : ""} I want to order ${service}`;
+  this.href = `https://wa.me/2349156002887?text=${encodeURIComponent(text)}`;
+});
+</script>
+</body>
+</html>
